@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block menu-alumni %}menu-active{% endblock menu-alumni %}
+
+{% block content %}
+<section class="container">
+    <div class="my-4">
+        <div class="row justify-content">
+            <div class="col-12 col-md-6 d-none d-md-block d-lg-block">
+                <h1 class="text-navy">Alumni Year Groups</h2>
+            </div>
+            <div class="col-12 col-md-6">
+                <form action="{% url 'year-group-search' %}" method="GET">
+                    <div class="form-row">
+                        <div class="form-group col-9 col-md-10">
+                            <div class="input-group mb-2 mr-sm-2">
+                                <input name='q' type="text" class="form-control" id="inlineFormInputGroupUsername2"
+                                    placeholder="Find a year group">
+                            </div>
+                        </div>
+                        <div class="form-group col-3 col-md-2">
+                            <button type="submit" class="btn btn-success btn-block"><i
+                                    class="bi bi-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-3">
+        <div class="row">
+            {% if results %}
+            {% for year in results %}
+            <div class="col-md-3">
+                <a href="{{year.get_absolute_url}}">
+                    <div class="report-card bg-light text-center p-3 mb-4" style="border-bottom: 7px solid #eeeeee">
+                        <h5 class="text-muted">Class of <span class="text-navy">{{year.name}}</span></h5>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="col-12">
+                <div class="p3 my-5 text-center">
+                    <h1>No Year Group Found</h1>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+</section>
+{% endblock content %}

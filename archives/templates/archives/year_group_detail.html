@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block menu-alumni %}menu-active{% endblock menu-alumni %}
+
+{% block content %}
+<section class="container my-5">
+    <center>
+        <h1 class="post-title">Class of {{year_group.name}}</h1>
+    </center>
+
+    <div class="py-3">
+        <div class="row">
+            {% for alumni in year_group.alumni_set.all %}
+            <div class="col-12 col-md-6 mb-4">
+                <div class="list-card bg-white shadow">
+                    <div class="row">
+                        <div class="col-4">
+                            <img src="{{MEDIA_URL}}{{alumni.image.url}}" alt="" class="img-fluid">
+
+                        </div>
+                        <div class="col">
+                            <div class="p-3">
+                                <h6>{{alumni.name}}</h6>
+                                <small class="text-muted">{{alumni.institution}}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock content %}

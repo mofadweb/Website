@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block menu-reports %}menu-active{% endblock menu-reports %}
+
+{% block content %}
+<section>
+    <div class="container">
+        <div class="row justify-content-center my-5">
+            <div class="col-12 col-md-8">
+                <h1 class="post-title">{{report}}</h1>
+                <p class="text-muted">By: {{report.by}}</p>
+                </p>
+
+                <div class="post-text my-4 pb-3">
+                    <p>{{report.text|safe}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</section>
+{% endblock content %}

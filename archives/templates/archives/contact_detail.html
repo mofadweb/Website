@@ -1,0 +1,41 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+<div class="row mt-2">
+    <div class="col-2 pt-3">
+        <a href="{% url 'contact-panel' %}" class="text-success">
+            <h6><i class="bi bi-arrow-left-circle mr-2 "></i>Home</h5>
+        </a>
+    </div>
+    <div class="col-8 pb-3 border-bottom">
+        <h1>{{message.subject}}</h1>
+
+        <div class="my-3">
+            <div class="row text-muted">
+                <div class="col">
+                    <span class="mr-3">From: {{message.name}}</span>
+                </div>
+                <div class="col">
+                    <span class="mr-3">Email: {{message.email}}</span>
+                </div>
+            </div>
+
+            <div class="row text-muted">
+                <div class="col">
+                    <span class="mr-3">Phone: {{message.phone}}</span>
+                </div>
+                <div class="col">
+                    <span class="mr-3">Date/Time: {{message.date}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center py-4">
+    <div class="col-8">
+        {{message.message|safe}}
+    </div>
+</div>
+
+{% endblock content %}

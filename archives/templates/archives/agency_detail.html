@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block menu-agencies %}menu-active{% endblock menu-agencies %}
+
+{% block content %}
+<section>
+    <div class="container">
+        <div class="row justify-content-center my-5">
+            <div class="col-12 col-md-11">
+                <h1 class="post-title">{{agency.name}}</h1>
+                <p class="text-muted">Loc: Ridge, Accra.</p>
+
+                <div class="post-text my-4">
+                    <p>{{agency.bio|safe}}</p>
+                </div>
+
+                <div class="py-3">
+                    <h3 class="text-primary mb-4">Leadership</h3>
+                    <div class="row justify-content">
+                        {% for leader in agency.agencyleader_set.all %}
+                        <div class="col-12 col-md-4 mb-4">
+                            <div class="leader-card border" style="height: 100%;">
+                                <img src="{{MEDIA_URL}}{{leader.image.url}}" alt="" class="img-fluid">
+                                <div class="py-3 px-4 text-center">
+                                    <h5>{{leader.name}}</h5>
+                                    <small class="text-muted">{{leader.position}}</small>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="py-3 mb-4">
+                    <h3 class="text-primary mb-4">Divisions</h3>
+
+                    <div class="row">
+                        {% for division in agency.agencydivision_set.all %}
+                        <div class="col-md-4 mb-4">
+                            <div class="bg-light border rounded p-4" style="height: 100%;">
+                                <div class="m-auto">
+                                    <h5 class="mb-0">{{division.name}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

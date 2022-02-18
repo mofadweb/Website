@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block menu-press %}menu-active{% endblock menu-press %}
+
+{% block content %}
+<div class="container">
+    <div class="my-4">
+        <div class="row justify-content">
+            <div class="col-12 col-md-6 d-none d-md-block d-lg-block">
+                <p class="lead"><span class="text-warning">{{results.all.count}}</span> Posts</p>
+            </div>
+            <div class="col-12 col-md-6">
+                <form action="{% url 'press_search-results' %}" method="GET">
+                    <div class="form-row">
+                        <div class="form-group col-9 col-md-10">
+                            <div class="input-group mb-2 mr-sm-2">
+                                <input name='q' type="text" class="form-control" id="inlineFormInputGroupUsername2"
+                                    placeholder="Search for any Press release">
+                            </div>
+                        </div>
+                        <div class="form-group col-3 col-md-2">
+                            <button type="submit" class="btn btn-success btn-block"><i
+                                    class="bi bi-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="section my-4 pb-3">
+        <div class="container">
+            <div class="row">
+                {% if results %}
+                {% for post in results %}
+                <div class="col-md-4 mb-3">
+                    <a href="" class="{{post.get_press_url}}">
+                        <div class="border p-3" style="height: 100%;">
+                            <small
+                                class="d-block mb-3 border-bottom border-success text-success">{{post.created_at|date:"F
+                                d, Y"}}</small>
+                            <h5 class="text-dark">{{post.title}}</h5>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+                {% else %}
+                <div class="col-12">
+                    <div class="p3 my-5 text-center">
+                        <h1>No Posts Found</h1>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

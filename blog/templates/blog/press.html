@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% block menu-press %}menu-active{% endblock menu-press%}
+
+{% block content %}
+<div class="container">
+    <div class="my-4">
+        <div class="row justify-content">
+            <div class="col-12 col-md-6 d-none d-md-block d-lg-block">
+                <p class="lead">
+                    <span class="text-warning">{{posts_count}}</span> Posts
+                </p>
+            </div>
+            <div class="col-12 col-md-6">
+                <form action="{% url 'press_search-results' %}" method="GET">
+                    <div class="form-row">
+                        <div class="form-group col-9 col-md-10">
+                            <div class="input-group mb-2 mr-sm-2">
+                                <input name="q" type="text" class="form-control" id="inlineFormInputGroupUsername2"
+                                    placeholder="Search for any Press release" />
+                            </div>
+                        </div>
+                        <div class="form-group col-3 col-md-2">
+                            <button type="submit" class="btn btn-success btn-block">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="section my-4 pb-3">
+        <div class="container">
+            <div class="row">
+                {% for post in posts %}
+                <div class="col-md-4 mb-3">
+                    <a href="" class="{{post.get_press_url}}">
+                        <div class="border p-3" style="height: 100%;">
+                            <small
+                                class="d-block mb-3 border-bottom border-success text-success">{{post.created_at|date:"F
+                                d, Y"}}</small>
+                            <h5 class="text-dark">{{post.title}}</h5>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+
+                <div class="col-md-4 mb-3">
+                    <a href="" class="">
+                        <div class="border p-3" style="height: 100%;">
+                            <small class="d-block mb-3 border-bottom border-success text-success">Oct 28, 2021</small>
+                            <h5 class="text-dark">Government releases washed ashore Dolphins back into the ocean
+                            </h5>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <a href="" class="">
+                        <div class="border p-3" style="height: 100%;">
+                            <small class="d-block mb-3 border-bottom border-success text-success">Sept 12, 2021</small>
+                            <h5 class="text-dark">MoFAD meets with Ghana National Canoe Fishermen Council</h5>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <a href="" class="">
+                        <div class="border p-3" style="height: 100%;">
+                            <small class="d-block mb-3 border-bottom border-success text-success">Aug 22, 2021</small>
+                            <h5 class="text-dark">Fisheries Minister engages with stakeholders</h5>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <a href="" class="">
+                        <div class="border p-3" style="height: 100%;">
+                            <small class="d-block mb-3 border-bottom border-success text-success">Aug 4, 2021</small>
+                            <h5 class="text-dark">Sector Minister charges TOR to up premix fuel supply.</h5>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <a href="" class="">
+                        <div class="border p-3" style="height: 100%;">
+                            <small class="d-block mb-3 border-bottom border-success text-success">June 27, 2021</small>
+                            <h5 class="text-dark">MoFAD debunks alleged claims of fish mortality</h5>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-4 mb-5">
+                {% if is_paginated %}
+
+                {% if page_obj.has_previous %}
+                <a class="btn btn-outline-success mb-4" href="?page=1">First</a>
+                <a class="btn btn-outline-success mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                {% endif %}
+
+                {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                <a class="btn btn-success mb-4" href="?page={{ num }}">{{ num }}</a>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %} <a
+                    class="btn btn-outline-success mb-4" href="?page={{ num }}">{{ num }}</a>
+                    {% endif %}
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                    <a class="btn btn-outline-success mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+                    <a class="btn btn-outline-success mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+                    {% endif %}
+
+                    {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

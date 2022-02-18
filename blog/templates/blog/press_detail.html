@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block menu-press %}menu-active{% endblock menu-press %}
+
+{% block content %}
+<section>
+    <div class="container">
+        <div class="row justify-content-center my-5">
+            <div class="col-12 col-md-8">
+                <h1 class="post-title">{{post.title}}</h1>
+                <p class="text-muted">{{post.created_at|date:"F d, Y"}}</p>
+
+                <img src="{{MEDIA_URL}}{{post.image.url}}" alt="" class="post-img img-fluid shadow my-2">
+
+                <div class="post-text my-4">
+                    <p>{{post.text|safe}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <section class="bg-light mt-5 post-more">
+        <div class="container py-5 p-md-5">
+            <h3 class="text-danger">Read More</h3>
+
+            <div class="post-more__relative mt-4">
+                <div class="row">
+                    {% for post in other_posts %}
+                    <div class="col-md-4 mb-4">
+                        <div class="post-card border">
+                            <div class="col-md-4 mb-3">
+                                <a href="" class="{{post.get_press_url}}">
+                                    <div class="border p-3" style="height: 100%;">
+                                        <small
+                                            class="d-block mb-3 border-bottom border-success text-success">{{post.created_at|date:"F
+                                            d, Y"}}</small>
+                                        <h5 class="text-dark">{{post.title}}</h5>
+                                    </div>
+                                </a>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+    </section>
+    {% endblock content %}

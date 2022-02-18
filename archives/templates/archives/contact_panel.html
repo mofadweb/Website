@@ -1,0 +1,100 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+<nav class="menu border-bottom">
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#home" role="tab"
+            aria-controls="nav-home" aria-selected="true">New/Unread</a>
+        <a class="nav-item nav-link" id="nav-article-tab" data-toggle="tab" href="#profile" role="tab"
+            aria-controls="nav-article" aria-selected="false">Read</a>
+        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#contact" role="tab"
+            aria-controls="nav-profile" aria-selected="false">All Messages</a>
+    </div>
+</nav>
+
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        {% if unread_messages %}
+        {% for message in unread_messages %}
+        <a href="{{message.get_absolute_url}}" class="message-card d-block text-dark bg-white border p-2">
+            <div class="row">
+                <div class="col-4" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                    {{message.subject}}
+                </div>
+                <div class="col-2 text-muted" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                    {{message.name}}
+                </div>
+                <div class="col-2 text-muted" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                    {{message.email}}
+                </div>
+                <div class="col text-muted">
+                    {{message.date}}
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+        {% else %}
+        <div class="p3 my-5 text-center">
+            <h1>No New/Unread messages</h1>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        {% if read_messages %}
+        {% for message in read_messages %}
+        <a href="{{message.get_absolute_url}}" class="message-card d-block text-dark bg-white border p-2">
+            <div class="row">
+                <div class="col-4 text-success" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                    {{message.subject}}
+                </div>
+                <div class="col-2 text-muted" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                    {{message.name}}
+                </div>
+                <div class="col-2 text-muted" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                    {{message.email}}
+                </div>
+                <div class="col text-muted">
+                    {{message.date}}
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+        {% else %}
+        <div class="p3 my-5 text-center">
+            <h1>No Messages have been opened/read.</h1>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+        {% for message in all_messages %}
+        <a href="{{message.get_absolute_url}}" class="message-card d-block text-dark bg-white border p-2">
+            <div class="row">
+                <div class="col-1 text-center">
+                    <small>
+                        {% if message.is_read %}
+                        <i class="bi bi-circle-fill text-success"></i>
+                        {% else %}
+                        <i class="bi bi-circle-fill text-muted"></i>
+                        {% endif %}
+                    </small>
+                </div>
+                <div class="col-4" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                    {{message.subject}}
+                </div>
+                <div class="col-2 text-muted" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                    {{message.name}}
+                </div>
+                <div class="col-2 text-muted" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                    {{message.email}}
+                </div>
+                <div class="col text-muted">
+                    {{message.date}}
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
