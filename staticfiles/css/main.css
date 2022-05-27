@@ -1,0 +1,367 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Josefin Sans", sans-serif !important;
+  box-sizing: border-box;
+  scroll-behavior: smooth !important;
+  background-color: #fff;
+}
+#main {
+  min-height: 80vh !important;
+}
+a {
+  text-decoration: none !important;
+}
+.asteriskField {
+  display: none;
+}
+.django-ckeditor-widget {
+  width: 100%;
+}
+.text-navy {
+  color: #000099 !important;
+}
+.text-orange {
+  color: #ff9900 !important;
+}
+.text-yellow {
+  color: #f5f500 !important;
+}
+
+/* TopBar */
+#topbar {
+}
+.logo {
+  height: 60px;
+  width: 80px;
+}
+.logo-text {
+  border-left: 2px solid #b0bec5;
+}
+.logo-text h6 {
+  font-weight: 600 !important;
+}
+
+/* Top Menu */
+.top-menu {
+  background: #007bff;
+  /* background: #5cb85c; */
+  border-top: 3px solid;
+  border-image: linear-gradient(
+      to right,
+      #c62828 25%,
+      #c62828 25%,
+      yellow 50%,
+      yellow 50%,
+      #5cb85c 75%,
+      #5cb85c 75%
+    )
+    5;
+}
+
+.top-menu-row {
+  overflow: auto;
+  white-space: nowrap;
+  scrollbar-width: none !important;
+  margin: 0;
+  padding: 0;
+}
+.top-menu-row::-webkit-scrollbar {
+  visibility: hidden;
+}
+.top-menu-link {
+  padding: 8px 20px !important;
+  line-height: 2.5;
+  color: white;
+  font-weight: 500;
+  font-size: 1rem;
+}
+.top-menu-link:hover {
+  /* background: #000079; */
+  color: darkblue;
+}
+.menu-active {
+  color: darkblue !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+}
+
+@media (max-width: 768px) {
+  .top-menu-link {
+    line-height: 2;
+    padding: 8px 15px !important;
+  }
+}
+@media (max-width: 502px) {
+  .top-menu-link {
+    padding: 8px 12px !important;
+  }
+}
+.carousel-item {
+  height: 87vh !important;
+  background-size: cover;
+}
+
+.slide {
+  display: none;
+  background-size: cover;
+  height: 88vh;
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  background-color: white;
+  color: #007bff;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 3rem;
+  width: 100%;
+  padding: 0 7rem;
+  text-align: center;
+  font-weight: 100 !important;
+}
+.text h1 {
+  font-size: 2.1rem;
+}
+
+.slide-fade {
+  -webkit-animation-name: slide-fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: slide-fade;
+  animation-duration: 2s;
+}
+
+@-webkit-keyframes slide-fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.mission h1 {
+  font-size: 3.8rem;
+  font-weight: 100 !important;
+}
+.mission p {
+  font-size: 1.5rem;
+}
+
+.post-card {
+  height: 100%;
+  /* border-radius: 3%; */
+}
+.post-card img {
+  width: 100%;
+  height: 12rem !important;
+  /* border-top-right-radius: 3%; */
+  /* border-top-left-radius: 3%; */
+}
+.post-card h4 {
+  font-weight: 900 !important;
+}
+.post-card p {
+  /* font-weight: lighter !important; */
+  color: #85929e;
+}
+.post-title {
+  font-size: 3rem !important;
+  /* color: #43a047 !important; */
+  color: coral;
+}
+@media (max-width: 520px) {
+  .post-title {
+    font-size: 2.3rem !important;
+  }
+}
+.post-img {
+  width: 100% !important;
+}
+.post-text {
+  overflow-x: auto !important;
+  scrollbar-width: none !important;
+}
+.post-text::-webkit-scrollbar {
+  visibility: hidden !important;
+}
+.post-text p {
+  font-size: 1.2rem;
+  line-height: 1.8 !important;
+}
+
+.post-more__relative {
+  background-size: 50%;
+}
+
+.home-about {
+  background-color: #f2f3f4;
+}
+.about-header > h1 {
+  font-weight: lighter;
+}
+.about-header > p {
+  font-size: 1.4rem;
+  line-height: 1.5 !important;
+}
+@media (min-width: 768px) {
+  .about-header > h1 {
+    font-size: 3.2rem;
+  }
+}
+
+/* contact */
+.contact {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+    url("/static/images/contact.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.list-card {
+  height: 100%;
+}
+.list-card img {
+  width: 100%;
+  height: 6.8rem;
+}
+@media (max-width: 1024px) {
+  .list-card > img {
+    width: fit-content;
+    /* height: 17rem; */
+  }
+}
+
+.agency-card {
+  height: 100%;
+}
+.agency-card img {
+  width: 100%;
+  height: 16rem;
+}
+.leader-card {
+  height: 100%;
+}
+.leader-card img {
+  width: 100%;
+  height: 16rem;
+}
+
+.footer {
+  background-color: darkblue;
+  border-top: 3px solid;
+  border-image: linear-gradient(
+      to right,
+      #c62828 25%,
+      #c62828 25%,
+      yellow 50%,
+      yellow 50%,
+      #5cb85c 75%,
+      #5cb85c 75%
+    )
+    5;
+}
+.menu .nav-tabs {
+  border: none !important;
+}
+.menu .nav-item {
+  border: none !important;
+  color: #808b96 !important;
+  font-weight: 500;
+  outline: none;
+}
+.menu .nav-item:hover {
+  color: cornflowerblue !important;
+}
+.menu .active {
+  border-bottom: 1.5px solid crimson !important;
+  color: black !important;
+}
+
+.report-card:hover {
+  background-color: #eeeeee !important;
+  transition: all ease-in-out 0.2s;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+th {
+  background-color: #003399 !important;
+  color: white !important;
+}
+
+.banner {
+  background-position: bottom;
+  background-size: cover;
+  height: 60vh;
+}
+@media (max-width: 1100px) {
+  .banner {
+    height: 30vh;
+  }
+}
+.about-text h1 {
+  color: #000079;
+  font-size: 3.8rem;
+  font-weight: 100 !important;
+  margin-bottom: 1.5rem;
+}
+.about-text p {
+  font-size: 1.2rem;
+  line-height: 1.8 !important;
+}
+
+.aim {
+  height: 100%;
+}
+
+.message-card:hover {
+  background-color: #dddddd !important;
+}

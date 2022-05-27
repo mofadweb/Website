@@ -27,12 +27,12 @@ from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv())
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ["SECRET_KEY"]
+SECRET_KEY = 'django-insecure-&xccl@e&u=iyxb59m!(xw3lftmird@%*-=zr2bm7)wdw)ouk^-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["mofadweb.pythonanywhere.com"]
 
 
 # Application definition
